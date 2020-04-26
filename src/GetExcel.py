@@ -28,10 +28,13 @@ class CrawlToDownload:
 
     def goto(self, url:str):
         self.browser.get(url)
+        print('%s\t:OK!'% url)
 
     def get_excel(self):
         self.browser.find_element_by_class_name('MwExcel').click()
+        print('Openned History Window!')
         self.browser.find_element_by_id('exceldate').send_keys(self.date)
         self.browser.find_element_by_xpath(
             "//div[@onclick='mw.ExportClick(\"dateexcel\")']").click()
+        print("File Downloaded! \t%s" % self.date)
         self.browser.close()
